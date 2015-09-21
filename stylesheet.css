@@ -12,6 +12,7 @@ header,div,body,h1,h2,h3,ul,li,a {
 
 #logo {
   padding: 20px;
+  margin: 0 0 0 0 !important;
 }
 
 #login-status {
@@ -19,9 +20,24 @@ header,div,body,h1,h2,h3,ul,li,a {
   right: 0;
   position: absolute;
   display: block;
-  margin: 20px;
 }
 
 .instagram-button {
   cursor: pointer;
+}
+
+.total-width {
+  width: 100%;
+}
+
+.hashtag-form {
+  width: 200px;
+  padding: 20px;
+  margin: 30px;
+  background-color: darkgray;
+  border-radius: 5px;
+}
+
+.hashtag-form button {
+  margin-top: 10px;
 }
