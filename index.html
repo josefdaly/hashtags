@@ -25,7 +25,7 @@
          } else {
            for(var i = 0; i < datum.comments.count; i++) {
              if (datum.comments.data[i].text.indexOf(tag) > -1) {
-               var createdTime = datum.comments.data.created_time;
+               var createdTime = datum.comments.data[i].created_time;
                break
              }
            }
@@ -101,7 +101,7 @@
          success: function(response) {
            var newData = parseResponse(response, tag, start, end)
            var nextUrl = response.pagination.next_url
-           this.setState({ data: this.state.concat(newData) })
+           this.setState({ data: this.state.data.concat(newData) })
            if (nextUrl) {
              nestedAjax(url, tag, start, end).bind(this)
            }
@@ -120,7 +120,7 @@
            success: function(response) {
              var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
              var nextUrl = response.pagination.next_url
-             this.setState({ data: this.state.concat(newData) })
+             this.setState({ data: this.state.data.concat(newData) })
              if (nextUrl) {
                nestedAjax(url, this.props.tag, this.props.start, this.props.end).bind(this)
              }
