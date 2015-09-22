@@ -38,7 +38,6 @@
              var path = datum.videos.low_bandwidth.url
            }
            dataToReturn.push({
-             createdAt: createdTime,
              username: datum.user.username,
              type: datum.type,
              createdAt: createdTime,
@@ -134,13 +133,14 @@
        render: function() {
          var Media = []
          this.state.data.forEach(function(datum) {
+           debugger
            if (datum.type == "image") {
              Media.push(
 
                  <ImageItem username={datum.username}
                    createdAt={datum.createdAt}
                      nativeUrl={datum.nativeUrl}
-                       imageUrl={datum.url} />
+                       url={datum.url} />
 
              )
            } else if (datum.type == "video") {
@@ -149,7 +149,7 @@
                  <VideoItem username={datum.username}
                    createdAt={datum.createdAt}
                      nativeUrl={datum.nativeUrl}
-                       videoUrl={datum.url} />
+                       url={datum.url} />
 
              )
            }
