@@ -67,7 +67,7 @@
      var ImageItem = React.createClass({
        render: function() {
          var date = new Date(this.props.createdAt * 1000)
-         var formattedDate = date.format("dd.mm.yyyy hh:MM:ss")
+         var formattedDate = date.toString();
          return (
            <li>
             <h3>{this.props.username}</h3>
@@ -82,8 +82,8 @@
      var VideoItem = React.createClass({
        render: function() {
          var date = new Date(this.props.createdAt * 1000)
-         var formattedDate = date.format("dd.mm.yyyy hh:MM:ss")
-         return(
+         var formattedDate = date.toString();
+         return (
            <li>
              <h3>{this.props.username}</h3>
              <span>{formattedDate}</span>
