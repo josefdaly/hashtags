@@ -132,31 +132,31 @@
          })
        },
        getInitialState: function() {
-         return ({data: []})
+         return ({data: []});
        },
        render: function() {
          var Media = []
          this.state.data.forEach(function(datum) {
            if (datum.type == "image") {
              Media.push(
-               return (
+
                  <ImageItem username={datum.username}
                    createdAt={datum.createdAt}
                      nativeUrl={datum.nativeUrl}
                        imageUrl={datum.url} />
-               )
+               
              )
            } else if (datum.type) == "video" {
              Media.push(
-               return (
+
                  <VideoItem username={datum.username}
                    createdAt{datum.createdAt}
                      nativeUrl={datum.nativeUrl}
                        videoUrl={datum.url} />
-               )
+
              )
            }
-         });
+         })
          return (
            <ul>
              {Media}
