@@ -113,6 +113,7 @@
              }
            }.bind(this),
            error: function(response) {
+             console.log(response)
              debugger
            }.bind(this)
          })
@@ -131,6 +132,7 @@
              }
            }.bind(this),
            error: function(response) {
+             console.log(response)
              debugger
            }.bind(this)
          })
@@ -170,7 +172,7 @@
            )
          } else {
            return (
-             <img src="http://www.ajaxload.info/cache/FF/FF/FF/00/00/00/27-1.gif" alt="loading" />
+             <img className="center-block" src="images/ajax-loader.gif" alt="loading" />
            )
          }
        }
