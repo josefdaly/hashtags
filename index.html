@@ -105,11 +105,11 @@
            dataType: 'JSON',
            crossDomain: true,
            success: function(response) {
-             var newData = parseResponse(response, tag, start, end)
+             var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
              var nextUrl = response.pagination.next_url
              this.setState({ data: this.state.data.concat(newData) })
              if (nextUrl) {
-               this.nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end);
+               this.nestedAjax(nextUrl);
              }
            }.bind(this),
            error: function(response) {
@@ -120,7 +120,7 @@
        },
        componentDidMount: function() {
          var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken;
-         this.nextedAjax(url)
+         this.nestedAjax(url)
         //  $.ajax({
         //    url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
         //    dataType: 'JSON',
