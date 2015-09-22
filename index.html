@@ -103,6 +103,7 @@
          $.ajax({
            url: url,
            dataType: 'JSON',
+           crossDomain: true,
            success: function(response) {
              var newData = parseResponse(response, tag, start, end)
              var nextUrl = response.pagination.next_url
@@ -120,6 +121,7 @@
          $.ajax({
            url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
            dataType: 'JSON',
+           crossDomain: true,
            success: function(response) {
              var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
              var nextUrl = response.pagination.next_url
@@ -168,8 +170,40 @@
        }
      })
 
-
-
+     var HashTagForm = React.createClass({
+       handleClick: function() {
+         var input = $('#hashtag-input').val();
+         var startDate = $('#start-date').val();
+         var endDate = $('#end-date').val();
+         if (input == "" || startDate == "" || endDate == "") {
+           alert('Must complete all feilds!')
+         } else {
+           React.unmountComponentAtNode(document.getElementById('content'));
+           React.render(
+             <MediaIndex authToken={this.props.token}
+               tag={input} start={startDate} end={endDate} />,
+             document.getElementById('content')
+           )
+         }
+       },
+       render: function() {
+         return (
+           <div className="hashtag-form center-block">
+             <span>Hashtag: </span>
+             <input className="total-width" id="hashtag-input" type="text" />
+             <br/>
+             <span>Start Date: </span>
+             <input className="total-width" id="start-date" type="date" />
+             <br/>
+             <span>End Date: </span>
+             <input className="total-width" id="end-date" type="date" />
+             <br/>
+             <button onClick={this.handleClick}
+               className="btn btn-default center-block">Load Content!</button>
+           </div>
+         )
+       }
+     });
 
      if (location.hash == "") {
        React.render(
@@ -181,6 +215,7 @@
        $.ajax({
          url: "https://api.instagram.com/v1/users/self?access_token=" + authToken,
          dataType: "JSON",
+         crossDomain: true,
          success: function(response) {
            var userInfo = response.data
            $('#login-status').html('<span>Hi ' + userInfo.full_name + '</span>');
