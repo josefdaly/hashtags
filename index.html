@@ -103,6 +103,7 @@
          $.ajax({
            url: url,
            dataType: 'JSON',
+           data:
            crossDomain: true,
            success: function(response) {
              var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
@@ -119,7 +120,7 @@
          })
        },
        componentDidMount: function() {
-         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken;
+         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken + "?count=100";
          this.nestedAjax(url)
         //  $.ajax({
         //    url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
