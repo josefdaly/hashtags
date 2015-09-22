@@ -93,25 +93,24 @@
        }
      })
 
-     var nestedAjax = function(url, tag, start, end) {
-       $.ajax({
-         url: url,
-         dataType: 'JSON',
-         success: function(response) {
-           var newData = parseResponse(response, tag, start, end)
-           var nextUrl = response.pagination.next_url
-           this.setState({ data: this.state.data.concat(newData) })
-           if (nextUrl) {
-             nestedAjax(nextUrl, tag, start, end).bind(this)
-           }
-         }.bind(this),
-         error: function() {
-           return {error: 'Oh no!'}
-         }.bind(this)
-       })
-     }
-
      var MediaIndex = React.createClass({
+       nestedAjax: function(url, tag, start, end) {
+         $.ajax({
+           url: url,
+           dataType: 'JSON',
+           success: function(response) {
+             var newData = parseResponse(response, tag, start, end)
+             var nextUrl = response.pagination.next_url
+             this.setState({ data: this.state.data.concat(newData) })
+             if (nextUrl) {
+               this.nestedAjax(nextUrl, tag, start, end)
+             }
+           }.bind(this),
+           error: function() {
+             return {error: 'Oh no!'}
+           }.bind(this)
+         })
+       },
        componentDidMount: function() {
          $.ajax({
            url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
@@ -121,7 +120,7 @@
              var nextUrl = response.pagination.next_url
              this.setState({ data: this.state.data.concat(newData) })
              if (nextUrl) {
-               nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end).bind(this)
+               this.nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end)
              }
            }.bind(this),
            error: function() {
