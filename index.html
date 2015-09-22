@@ -112,13 +112,13 @@
            url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
            dataType: 'JSON',
            success: function(response) {
-             var newState = parseResponse(response, this.props.tags, this.props.start, this.props.end)
+             var newState = parseResponse(response, this.props.tag, this.props.start, this.props.end)
              var nextUrl = response.pagination.next_url
              if (nextUrl) {
                condition = true
              }
              while(condition) {
-               var payload = nestedAjax(nextUrl, this.props.tags, this.props.start, this.props.end)
+               var payload = nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end)
                newState.concat(payload.data)
                if (!payload.next) {
                  condition = false;
