@@ -99,7 +99,7 @@
      })
 
      var MediaIndex = React.createClass({
-       nestedAjax: function(url, tag, start, end) {
+       nestedAjax: function(url) {
          $.ajax({
            url: url,
            dataType: 'JSON',
@@ -109,7 +109,7 @@
              var nextUrl = response.pagination.next_url
              this.setState({ data: this.state.data.concat(newData) })
              if (nextUrl) {
-               this.nestedAjax(nextUrl, tag, start, end)
+               this.nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end);
              }
            }.bind(this),
            error: function(response) {
@@ -119,23 +119,25 @@
          })
        },
        componentDidMount: function() {
-         $.ajax({
-           url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
-           dataType: 'JSON',
-           crossDomain: true,
-           success: function(response) {
-             var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
-             var nextUrl = response.pagination.next_url
-             this.setState({ data: this.state.data.concat(newData) })
-             if (nextUrl) {
-               this.nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end)
-             }
-           }.bind(this),
-           error: function(response) {
-             console.log(response)
-             debugger
-           }.bind(this)
-         })
+         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
+         this.nextedAjax(url)
+        //  $.ajax({
+        //    url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
+        //    dataType: 'JSON',
+        //    crossDomain: true,
+        //    success: function(response) {
+        //      var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
+        //      var nextUrl = response.pagination.next_url
+        //      this.setState({ data: this.state.data.concat(newData) })
+        //      if (nextUrl) {
+        //        this.nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end)
+        //      }
+        //    }.bind(this),
+        //    error: function(response) {
+        //      console.log(response)
+        //      debugger
+        //    }.bind(this)
+        //  })
        },
        getInitialState: function() {
          return ({data: []});
