@@ -99,7 +99,12 @@
          async: false,
          dataType: 'JSON',
          success: function(response) {
-           return {next: response.pagination.next_url, data: parseResponse(response, tag, start, end)}
+           var newData = parseResponse(response, tag, start, end)
+           var nextUrl = response.pagination.next_url
+           this.setState({ data: this.state.concat(newData) })
+           if (nextUrl) {
+             nestedAjax(url, tag, start, end).bind(this)
+           }
          }.bind(this),
          error: function() {
            return {error: 'Oh no!'}
@@ -113,19 +118,12 @@
            url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
            dataType: 'JSON',
            success: function(response) {
-             var newState = parseResponse(response, this.props.tag, this.props.start, this.props.end)
+             var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
              var nextUrl = response.pagination.next_url
+             this.setState({ data: this.state.concat(newData) })
              if (nextUrl) {
-               condition = true
+               nestedAjax(url, this.props.tag, this.props.start, this.props.end).bind(this)
              }
-             while(condition) {
-               var payload = nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end)
-               newState.concat(payload.data)
-               if (!payload.next) {
-                 condition = false;
-               }
-             }
-             this.setState({ data: newState })
            }.bind(this),
            error: function() {
 
