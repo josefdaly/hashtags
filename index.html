@@ -119,7 +119,7 @@
          })
        },
        componentDidMount: function() {
-         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
+         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken;
          this.nextedAjax(url)
         //  $.ajax({
         //    url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
