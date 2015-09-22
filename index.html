@@ -103,7 +103,7 @@
            var nextUrl = response.pagination.next_url
            this.setState({ data: this.state.data.concat(newData) })
            if (nextUrl) {
-             nestedAjax(url, tag, start, end).bind(this)
+             nestedAjax(nextUrl, tag, start, end).bind(this)
            }
          }.bind(this),
          error: function() {
@@ -122,7 +122,7 @@
              var nextUrl = response.pagination.next_url
              this.setState({ data: this.state.data.concat(newData) })
              if (nextUrl) {
-               nestedAjax(url, this.props.tag, this.props.start, this.props.end).bind(this)
+               nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end).bind(this)
              }
            }.bind(this),
            error: function() {
