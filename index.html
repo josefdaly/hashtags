@@ -96,7 +96,6 @@
      var nestedAjax = function(url, tag, start, end) {
        $.ajax({
          url: url,
-         async: false,
          dataType: 'JSON',
          success: function(response) {
            var newData = parseResponse(response, tag, start, end)
