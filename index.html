@@ -23,7 +23,7 @@
          if (datum.caption.text.indexOf(tag) > -1) {
            var createdTime = datum.caption.created_time;
          } else {
-           for(var i = 0; i < datum.comments.count; i++) {
+           for(var i = 0; i < datum.comments.data.length; i++) {
              if (datum.comments.data[i].text.indexOf(tag) > -1) {
                var createdTime = datum.comments.data[i].created_time;
                break
