@@ -17,6 +17,39 @@
    <script src="vendor/react.min.js"></script>
    <script src="vendor/JSXTransformer.js"></script>
    <script type="text/jsx">
+     var parseResponse = function(response, tag, start, end) {
+       var dataToReturn = []
+       response.data.forEach(function(datum) {
+         if (datum.caption.text.indexOf(tag) > -1) {
+           var createdTime = datum.caption.created_time;
+         } else {
+           for(var i = 0; i < datum.comments.count; i++) {
+             if (datam.comments.data[i].text.indexOf(tag) > -1) {
+               var createdTime = data.caption.created_time;
+               break
+             }
+           }
+         }
+         if ((new Date(start) < createdTime * 1000) &&
+              (new Date(end) > createdTime * 1000)) {
+           if (datum.type == "image") {
+             var path = datum.images.low_resolution.url
+           } else {
+             var path = datum.videos.low_bandwidth.url
+           }
+           dataToReturn.push({
+             createdAt: createdTime,
+             username: datum.user.username,
+             type: datum.type,
+             createdAt: createdTime,
+             url: path,
+             nativeUrl: datum.link
+           })
+         }
+       })
+       return dataToReturn;
+     }
+
      var SignIn = React.createClass({
        handleClick: function() {
          window.location.replace(
@@ -32,12 +65,126 @@
        }
      })
 
+     var ImageItem = React.createClass({
+       render: function() {
+         return (
+           <li>
+            <h3>{this.props.username}</h3>
+            <span>{this.props.createdAt}</span>
+            <a href={this.props.nativeUrl}>View at Instagram</a>
+            <img src={this.props.url} alt="" />
+           </li>
+         )
+       }
+     })
+
+     var VideoItem = React.createClass({
+       render: function() {
+         return(
+           <li>
+             <h3>{this.props.username}</h3>
+             <span>{this.props.createdAt}</span>
+             <a href={this.props.nativeUrl}>View at Instagram</a>
+             <video controls>
+               <source src={this.props.url} type="video/mp4">
+             </video>
+           </li>
+         )
+       }
+     })
+
+     var nestedAjax = function(url, tag, start, end) {
+       $.ajax({
+         url: url,
+         dataType: 'JSON',
+         success: function(response) {
+           return {next: response.pagination.next_url, data: parseResponse(response, tag, start, end)}
+         }.bind(this),
+         error: function() {
+           return {error: 'Oh no!'}
+         }.bind(this)
+       })
+     }
+
+     var MediaIndex = React.createClass({
+       componentDidMount: function() {
+         $.ajax({
+           url: "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken,
+           dataType: 'JSON',
+           success: function(response) {
+             var newState = parseResponse(response, this.props.tags, this.props.start, this.props.end)
+             var nextUrl = response.pagination.next_url
+             if (nextUrl) {
+               condition = true
+             }
+             while(condition) {
+               var payload = nestedAjax(nextUrl, this.props.tags, this.props.start, this.props.end)
+               newState.concat(payload.data)
+               if (!payload.next) {
+                 condition = false;
+               }
+             }
+             this.setState({ data: newState })
+           }.bind(this),
+           error: function() {
+
+           }.bind(this)
+         })
+       },
+       getInitialState: function() {
+         return ({data: []})
+       },
+       render: function() {
+         var Media = []
+         this.state.data.forEach(function(datum) {
+           if (datum.type == "image") {
+             Media.push(
+               return (
+                 <ImageItem username={datum.username}
+                   createdAt={datum.createdAt}
+                     nativeUrl={datum.nativeUrl}
+                       imageUrl={datum.url} />
+               )
+             )
+           } else if (datum.type) == "video" {
+             Media.push(
+               return (
+                 <VideoItem username={datum.username}
+                   createdAt{datum.createdAt}
+                     nativeUrl={datum.nativeUrl}
+                       videoUrl={datum.url} />
+               )
+             )
+           }
+         });
+         return (
+           <ul>
+             {Media}
+           </ul>
+         )
+       }
+     })
+
      var HashTagForm = React.createClass({
+       handleClick: function() {
+         var input = $('#hashtag-input').val();
+         var startDate = $('#start-date').val();
+         var endDate = $('#end-date').val();
+         if (input == "" || startDate == "" || endDate == "") {
+           alert('Must complete all feilds!')
+         } else {
+           React.render(
+             <MediaIndex authToken={this.props.token}
+               tag={input} start={startDate} end={endDate} />,
+             document.getElementById('content')
+           )
+         }
+       },
        render: function() {
          return (
            <div className="hashtag-form center-block">
              <span>Hashtag: </span>
-             <input className="total-width" type="text" />
+             <input className="total-width" id="hashtag-input" type="text" />
              <br/>
              <span>Start Date: </span>
              <input className="total-width" id="start-date" type="date" />
@@ -45,7 +192,8 @@
              <span>End Date: </span>
              <input className="total-width" id="end-date" type="date" />
              <br/>
-             <button className="btn btn-default center-block">Load Content!</button>
+             <button onClick={this.handleClick}
+               className="btn btn-default center-block">Load Content!</button>
            </div>
          )
        }
@@ -65,7 +213,7 @@
          success: function(response) {
            var userInfo = response.data
            $('#login-status').html('<span>Hi ' + userInfo.full_name + '</span>');
-           React.render(<HashTagForm />, document.getElementById('form'))
+           React.render(<HashTagForm token={authToken} />, document.getElementById('form'))
          }.bind(this),
          error: function() {
 
