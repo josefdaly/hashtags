@@ -103,7 +103,6 @@
          $.ajax({
            url: url,
            dataType: 'JSON',
-           data:
            crossDomain: true,
            success: function(response) {
              var newData = parseResponse(response, this.props.tag, this.props.start, this.props.end)
