@@ -73,7 +73,8 @@
             <h3>{this.props.username}</h3>
             <span>{formattedDate}</span> <br/>
             <a href={this.props.nativeUrl}>View at Instagram</a> <br/>
-            <img src={this.props.url} alt="" />
+            <img src={this.props.url} alt=""
+              height="300" width="300"/>
            </li>
          )
        }
@@ -88,7 +89,7 @@
              <h3>{this.props.username}</h3>
              <span>{formattedDate}</span> <br/>
              <a href={this.props.nativeUrl}>View at Instagram</a> <br/>
-             <video controls>
+             <video height="300" width="300" controls>
                <source src={this.props.url} type="video/mp4" />
              </video>
            </li>
