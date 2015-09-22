@@ -113,7 +113,7 @@
              }
            }.bind(this),
            error: function() {
-             return {error: 'Oh no!'}
+             alert("oh no!")
            }.bind(this)
          })
        },
@@ -131,7 +131,7 @@
              }
            }.bind(this),
            error: function() {
-
+             alert("oh no!")
            }.bind(this)
          })
        },
@@ -139,34 +139,40 @@
          return ({data: []});
        },
        render: function() {
-         var Media = []
-         this.state.data.forEach(function(datum) {
-           debugger
-           if (datum.type == "image") {
-             Media.push(
+         if (this.state.data.length > 0) {
+           var Media = []
+           this.state.data.forEach(function(datum) {
+             debugger
+             if (datum.type == "image") {
+               Media.push(
 
-                 <ImageItem username={datum.username}
-                   createdAt={datum.createdAt}
-                     nativeUrl={datum.nativeUrl}
-                       url={datum.url} />
+                   <ImageItem username={datum.username}
+                     createdAt={datum.createdAt}
+                       nativeUrl={datum.nativeUrl}
+                         url={datum.url} />
 
-             )
-           } else if (datum.type == "video") {
-             Media.push(
+               )
+             } else if (datum.type == "video") {
+               Media.push(
 
-                 <VideoItem username={datum.username}
-                   createdAt={datum.createdAt}
-                     nativeUrl={datum.nativeUrl}
-                       url={datum.url} />
+                   <VideoItem username={datum.username}
+                     createdAt={datum.createdAt}
+                       nativeUrl={datum.nativeUrl}
+                         url={datum.url} />
 
-             )
-           }
-         })
-         return (
-           <ul>
-             {Media}
-           </ul>
-         )
+               )
+             }
+           })
+           return (
+             <ul>
+               {Media}
+             </ul>
+           )
+         } else {
+           return (
+             <img src="http://www.ajaxload.info/cache/FF/FF/FF/00/00/00/27-1.gif" alt="loading" />
+           )
+         }
        }
      })
 

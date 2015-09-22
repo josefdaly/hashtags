@@ -42,7 +42,7 @@ header,div,body,h1,h2,h3,ul,li,a {
   margin-top: 10px;
 }
 
-img,video {
+li img,video {
   height: 300px;
   width: 300px;
 }
