@@ -112,8 +112,8 @@
                this.nestedAjax(nextUrl, tag, start, end)
              }
            }.bind(this),
-           error: function() {
-             alert("oh no!")
+           error: function(response) {
+             debugger
            }.bind(this)
          })
        },
@@ -130,8 +130,8 @@
                this.nestedAjax(nextUrl, this.props.tag, this.props.start, this.props.end)
              }
            }.bind(this),
-           error: function() {
-             alert("oh no!")
+           error: function(response) {
+             debugger
            }.bind(this)
          })
        },
@@ -181,6 +181,9 @@
          var input = $('#hashtag-input').val();
          var startDate = $('#start-date').val();
          var endDate = $('#end-date').val();
+         $('#hashtag-input').val("");
+         $('#start-date').val("");
+         $('#end-date').val("");
          if (input == "" || startDate == "" || endDate == "") {
            alert('Must complete all feilds!')
          } else {
