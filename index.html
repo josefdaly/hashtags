@@ -20,7 +20,7 @@
      var parseResponse = function(response, tag, start, end) {
        var dataToReturn = []
        response.data.forEach(function(datum) {
-         if (datam.caption && datum.caption.text.indexOf(tag) > -1) {
+         if (datum.caption && datum.caption.text.indexOf(tag) > -1) {
            var createdTime = datum.caption.created_time;
          } else {
            for(var i = 0; i < datum.comments.data.length; i++) {
