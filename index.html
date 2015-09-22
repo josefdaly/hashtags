@@ -66,10 +66,12 @@
 
      var ImageItem = React.createClass({
        render: function() {
+         var date = new Date(this.props.createdAt * 1000)
+         var formattedDate = date.format("dd.mm.yyyy hh:MM:ss")
          return (
            <li>
             <h3>{this.props.username}</h3>
-            <span>{this.props.createdAt}</span>
+            <span>{formattedDate}</span>
             <a href={this.props.nativeUrl}>View at Instagram</a>
             <img src={this.props.url} alt="" />
            </li>
@@ -79,10 +81,12 @@
 
      var VideoItem = React.createClass({
        render: function() {
+         var date = new Date(this.props.createdAt * 1000)
+         var formattedDate = date.format("dd.mm.yyyy hh:MM:ss")
          return(
            <li>
              <h3>{this.props.username}</h3>
-             <span>{this.props.createdAt}</span>
+             <span>{formattedDate}</span>
              <a href={this.props.nativeUrl}>View at Instagram</a>
              <video controls>
                <source src={this.props.url} type="video/mp4" />
