@@ -176,17 +176,19 @@
            return (
              <div id="ul-wrapper">
                <div className="info">
-                 <span className="status">Viewing: {this.state.idx + 1} through {this.state.idx + 6} of {this.state.data.length}
-                  <button onClick={this.jumpClick} className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" placeholder="Item Number" className="current-page"/></span>
                  <span className="status">Username: <span id="username"></span></span>
                  <span className="status" id="native-url"></span>
                  <span className="status">Tagged Time: <span id="created-time"></span></span>
                  <br/>
                </div>
+               <div className="media-display">
+               </div>
                <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>
                <ul className="content-container">
                  {Media.slice(this.state.idx, this.state.idx + 6)}
                </ul>
+               <span className="page-status">Viewing: {this.state.idx + 1} through {this.state.idx + 6} of {this.state.data.length}
+                <button onClick={this.jumpClick} className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" placeholder="Item Number" className="current-page"/></span>
                <div className="carousel-arrow right" onClick={this.clickRight}>{'›'}</div>
              </div>
            )

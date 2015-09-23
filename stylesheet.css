@@ -46,7 +46,7 @@ body {
 }
 
 li img:hover {
-  transform: scale(4);
+  transform: scale(1.2);
 }
 
 .list-media {
@@ -57,7 +57,7 @@ li img:hover {
 }
 
 li video:hover {
-  transform: scale(4);
+  transform: scale(1.2);
 }
 
 .btn {
@@ -70,7 +70,7 @@ li video:hover {
 
 .content-container {
   position: fixed;
-  bottom: 0px;
+  bottom: 15px;
   margin-top: 20px;
   list-style-type: none;
   width: 100%;
@@ -85,6 +85,11 @@ li video:hover {
 .info .status {
   margin-left: 20px !important;
   margin-right: 10px !important;
+}
+
+.page-status {
+  display: block;
+  text-align: center;
 }
 
 .carousel-arrow {
