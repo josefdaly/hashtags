@@ -103,3 +103,7 @@ li video:hover {
 .right {
   right: 10px;
 }
+
+.current-page {
+  width: 20px;
+}
