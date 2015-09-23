@@ -34,11 +34,18 @@
      })
 
      var ImageItem = React.createClass({
+       mouseIn: function() {
+         $('#username').html(this.props.username);
+         $('#native-url').html("<a href='" + this.props.nativeUrl + "'>View At Instagram</a>")
+         var date = new Date(this.props.createdAt)
+         var formattedDate = date.toString();
+         $('#created-time').html(formattedDate);
+       },
        render: function() {
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();
          return (
-           <li>
+           <li onMouseIn={this.mouseIn}>
             <img className="list-media" src={this.props.url} alt="" />
            </li>
          )
@@ -46,11 +53,17 @@
      })
 
      var VideoItem = React.createClass({
-       render: function() {
+       mouseIn: function() {
+         $('#username').html(this.props.username);
+         $('#native-url').html("<a href='" + this.props.nativeUrl + "'>View At Instagram</a>")
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();
+         $('#created-time').html(formattedDate);
+       },
+       render: function() {
+
          return (
-           <li>
+           <li onMouseIn={this.mouseIn}>
              <video className="list-media" controls>
                <source src={this.props.url} type="video/mp4" />
              </video>
@@ -151,11 +164,11 @@
              <div id="ul-wrapper">
                <div className="info">
                  <span>Content Count: {this.state.data.length}</span>
-                 <br/>
+
                  <span id="username"></span>
-                 <br/>
+
                  <span id="native-url"></span>
-                 <br/>
+
                  <span id="created-time"></span>
                  <br/>
                </div>

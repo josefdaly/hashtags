@@ -43,18 +43,6 @@ body {
   height: 50px;
   padding: 10px;
   background-color: darkgray;
-}S
-
-li img {
-  height: 300px;
-  width: 300px;
-  transition: .5s;
-}
-
-li video {
-  height: 300px;
-  width: 300px;
-  transition: .5s;
 }
 
 li img:hover {
@@ -62,7 +50,10 @@ li img:hover {
 }
 
 .list-media {
+  height: 300px;
+  width: 300px;
   transition: .5s !important;
+  vertical-align: top !important;
 }
 
 li video:hover {
