@@ -37,9 +37,6 @@
      })
 
      var ImageItem = React.createClass({
-       mouseIn: function() {
-
-       },
        handleClick: function() {
          $('.media-display').html("<img src='" +
             this.props.url + "' class='display-item'>")
@@ -61,9 +58,6 @@
      })
 
      var VideoItem = React.createClass({
-       mouseIn: function() {
-
-       },
        handleClick: function() {
          $('.media-display').html("<video class='display-item' controls><source src='" +
            this.props.url + "' type='video/mp4' /> </video>")
@@ -119,14 +113,6 @@
            }
          }
          return createdTime;
-       },
-       save: function() {
-         $.ajax({
-           url: 'http://localhost:3000/tags',
-           type: 'post',
-           contentType: 'application/json',
-           data: {"tag":{"name":this.props.tag, "data":this.state.data}}
-         })
        },
        nestedAjax: function(url) {
          $.ajax({
@@ -198,7 +184,6 @@
                  <span className="status"><span id="created-time"></span></span>
                  <br/>
                </div>
-               <button type="button" onClick={this.save}>Save Results so far!</button>
                <div className="media-display">
                </div>
                <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>
