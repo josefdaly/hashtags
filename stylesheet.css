@@ -10,6 +10,10 @@ header,div,body,h1,h2,h3,ul,li,a {
   font-family: sans-serif;
 }
 
+#content {
+  width: 100%;
+}
+
 #logo {
   padding: 20px;
   margin: 0 0 0 0 !important;
@@ -40,6 +44,15 @@ header,div,body,h1,h2,h3,ul,li,a {
 li img,video {
   height: 300px;
   width: 300px;
+  transition: .5s;
+}
+
+li img:hover {
+  transform: scale(1.15);
+}
+
+li video:hover {
+  transform: scale(1.15);
 }
 
 .btn {
@@ -48,4 +61,14 @@ li img,video {
 
 .loading-gif {
   margin-top: 100px;
+}
+
+.content-container {
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+.content-container li {
+  display: inline-block;
 }
