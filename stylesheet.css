@@ -44,14 +44,16 @@ header,div,body,h1,h2,h3,ul,li,a {
 li img,video {
   height: 300px;
   width: 300px;
-  transition: .5s;
+  margin: 15px;;
 }
 
 li img:hover {
+  transition: .5s;
   transform: scale(1.15);
 }
 
 li video:hover {
+  transition: .5s;
   transform: scale(1.15);
 }
 
