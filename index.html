@@ -120,6 +120,14 @@
          }
          return createdTime;
        },
+       save: function() {
+         $.ajax({
+           url: 'localhost:3000/tags',
+           type: 'post',
+           contentType: 'application/json',
+           data: {"tag":{"name":this.props.tag, "data":this.state.data}}
+         })
+       },
        nestedAjax: function(url) {
          $.ajax({
            url: url,
