@@ -116,6 +116,8 @@
              }
              if (nextUrl && dataEndTime > new Date(this.props.end)) {
                this.nestedAjax(nextUrl);
+             } else {
+               this.setState({ over: true })
              }
            }.bind(this),
            error: function(response) {
@@ -129,7 +131,7 @@
          this.nestedAjax(url);
        },
        getInitialState: function() {
-         return ({data: []});
+         return ({data: [], over: false});
        },
        render: function() {
          if (this.state.data.length > 0) {
@@ -157,9 +159,15 @@
              </ul>
            )
          } else {
-           return (
-             <img className="center-block" src="images/ajax-loader.gif" alt="loading" />
-           )
+           if (this.state.over) {
+             return (
+               <span>No Data for the selected period.</span
+             )
+           } else {             
+             return (
+               <img className="center-block" src="images/ajax-loader.gif" alt="loading" />
+             )
+           }
          }
        }
      })
@@ -172,8 +180,9 @@
          $('#hashtag-input').val("");
          $('#start-date').val("");
          $('#end-date').val("");
-         if (input == "" || startDate == "" || endDate == "") {
-           alert('Must complete all feilds!')
+         if (input == "" || startDate == "" || endDate == "" ||
+           new Date(endDate) > new Date(startDate)) {
+           alert('Invalid Input!')
          } else {
            React.unmountComponentAtNode(document.getElementById('content'));
            React.render(
