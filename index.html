@@ -101,19 +101,15 @@
            dataType: 'JSON',
            crossDomain: true,
            success: function(response) {
-             if (response.data) {
-               var dataMostRecent = this.getCreatedTime(response.data[0]);
-               var dataOldest = this.getCreatedTime(response.data[response.data.length - 1]);
-               var nextUrl = response.pagination.next_url
-               if (new Date(this.props.start) < dataMostRecent) {
-                 var newData = this.parseResponse(response)
-                 this.setState({ data: this.state.data.concat(newData) })
-               }
-               if (nextUrl && dataOldest > new Date(this.props.start)) {
-                 this.nestedAjax(nextUrl);
-               } else {
-                 this.setState({ over: true })
-               }
+             var dataMostRecent = this.getCreatedTime(response.data[0]);
+             var dataOldest = this.getCreatedTime(response.data[response.data.length - 1]);
+             var nextUrl = response.pagination.next_url
+             if (new Date(this.props.start) < dataMostRecent) {
+               var newData = this.parseResponse(response)
+               this.setState({ data: this.state.data.concat(newData) })
+             }
+             if (nextUrl && dataOldest > new Date(this.props.start)) {
+               this.nestedAjax(nextUrl);
              } else {
                this.setState({ over: true })
              }
@@ -152,9 +148,21 @@
              }
            })
            return (
-             <ul className="content-container">
-               {Media.slice(this.state.idx, 3)}
-             </ul>
+             <div id="ul-wrapper">
+               <div className="info">
+                 <span>Content Count: {this.state.data.length}</span>
+                 <br/>
+                 <span id="username"></span>
+                 <br/>
+                 <span id="native-url"></span>
+                 <br/>
+                 <span id="created-time"></span>
+                 <br/>
+               </div>
+               <ul className="content-container">
+                 {Media.slice(this.state.idx, 3)}
+               </ul>
+             </div>
            )
          } else {
            if (this.state.over == true) {

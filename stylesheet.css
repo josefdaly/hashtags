@@ -45,13 +45,19 @@ body {
   background-color: darkgray;
 }S
 
-li img,video {
+li img {
   height: 300px;
   width: 300px;
+  transition: .5s;
+}
+
+li video {
+  height: 300px;
+  width: 300px;
+  transition: .5s;
 }
 
 li img:hover {
-  transition: .5s;
   transform: scale(1.15);
 }
 
