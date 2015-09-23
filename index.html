@@ -110,7 +110,7 @@
              var dataMostRecent = this.getCreatedTime(response.data[0]);
              var dataOldest = this.getCreatedTime(response.data[response.data.length - 1]);
              var nextUrl = response.pagination.next_url
-             if (new Date(this.props.end) > dataOldest) {
+             if (new Date(this.props.start) < dataMostRecent) {
                var newData = this.parseResponse(response)
                this.setState({ data: this.state.data.concat(newData) })
              }
