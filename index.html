@@ -111,9 +111,10 @@
        nestedAjax: function(url) {
          $.ajax({
            url: url,
-           dataType: 'JSON',
+           dataType: 'JSONP',
            crossDomain: true,
            success: function(response) {
+             debugger
              var dataMostRecent = this.getCreatedTime(response.data[0]);
              var dataOldest = this.getCreatedTime(response.data[response.data.length - 1]);
              var nextUrl = response.pagination.next_url
