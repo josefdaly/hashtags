@@ -136,6 +136,7 @@
        componentDidMount: function() {
          var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken + "&count=200";
          this.nestedAjax(url);
+         $('.current-page').val('1')
        },
        getInitialState: function() {
          return ({data: [], over: false, idx: 0});
@@ -163,7 +164,8 @@
            return (
              <div id="ul-wrapper">
                <div className="info">
-                 <span className="status">Viewing: <input className="current-page" type="text" value={this.state.idx + 1}/> through {this.state.idx + 3} of {this.state.data.length}</span>
+                 <span className="status">Viewing: <input className="current-page" type="text" value=""/> through {this.state.idx + 3} of {this.state.data.length}</span>
+                 <button className="btn btn-xs" type="button">Jump</button>
                  <span className="status">Username: <span id="username"></span></span>
                  <span className="status" id="native-url"></span>
                  <span className="status">Tagged Time: <span id="created-time"></span></span>
@@ -191,11 +193,15 @@
        clickLeft: function() {
          if (this.state.idx > 0) {
            this.setState({ idx: this.state.idx - 1 })
+           var currentPage = parseInt($('.current-page').val())
+           $('.current-page').val(currentPage - 1)
          }
        },
        clickRight: function() {
          if (this.state.idx < this.state.data.length - 4) {
            this.setState({ idx: this.state.idx + 1 })
+           var currentPage = parseInt($('.current-page').val())
+           $('.current-page').val(currentPage + 1)
          }
        }
      })
