@@ -79,6 +79,14 @@
      })
 
      var MediaIndex = React.createClass({
+       save: function() {
+         $.ajax({
+           url: 'http://localhost:3000/tags',
+           contentType: 'application/json',
+           type: 'post',
+           data: {"tag":{"name":this.props.tag, "data":this.state.data}}
+         })
+       }
        parseResponse: function(response) {
          var dataToReturn = []
          response.data.forEach(function(datum) {
@@ -184,6 +192,7 @@
                  <span className="status"><span id="created-time"></span></span>
                  <br/>
                </div>
+               <button onClick={this.save} type="button">Save!</button>
                <div className="media-display">
                </div>
                <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>
