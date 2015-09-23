@@ -50,7 +50,7 @@ li img:hover {
 }
 
 .display-item {
-  margin-left: calc(50% - 175px)
+  margin-left: calc(50% - 175px);
   height: 350px;
   width: 350px;
 }
