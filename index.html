@@ -39,7 +39,7 @@
          var formattedDate = date.toString();
          return (
            <li>
-            <img src={this.props.url} alt="" />
+            <img className="list-media" src={this.props.url} alt="" />
            </li>
          )
        }
@@ -51,7 +51,7 @@
          var formattedDate = date.toString();
          return (
            <li>
-             <video controls>
+             <video className="list-media" controls>
                <source src={this.props.url} type="video/mp4" />
              </video>
            </li>

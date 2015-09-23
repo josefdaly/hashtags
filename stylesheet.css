@@ -58,12 +58,15 @@ li video {
 }
 
 li img:hover {
-  transform: scale(1.15);
+  transform: scale(1.1);
+}
+
+.list-media {
+  transition: .5s !important;
 }
 
 li video:hover {
-  transition: .5s;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .btn {
