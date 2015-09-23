@@ -38,15 +38,16 @@
 
      var ImageItem = React.createClass({
        mouseIn: function() {
+
+       },
+       handleClick: function() {
+         $('.media-display').html("<img src='" +
+            this.props.url + "' class='display-item'>")
          $('#username').html('<strong>' + this.props.username + '</strong>');
          $('#native-url').html("<a href='" + this.props.nativeUrl + "'>View At Instagram</a>")
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();
          $('#created-time').html(formattedDate);
-       },
-       handleClick: function() {
-         $('.media-display').html("<img src='" +
-            this.props.url + "' class='display-item'>")
        },
        render: function() {
          var date = new Date(this.props.createdAt)
@@ -61,15 +62,16 @@
 
      var VideoItem = React.createClass({
        mouseIn: function() {
+
+       },
+       handleClick: function() {
+         $('.media-display').html("<video class='display-item' controls><source src='" +
+           this.props.url + "' type='video/mp4' /> </video>")
          $('#username').html(this.props.username);
          $('#native-url').html("<a href='" + this.props.nativeUrl + "'>View At Instagram</a>")
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();
          $('#created-time').html(formattedDate);
-       },
-       handleClick: function() {
-         $('.media-display').html("<video class='display-item' controls><source src='" +
-           this.props.url + "' type='video/mp4' /> </video>")
        },
        render: function() {
          return (
