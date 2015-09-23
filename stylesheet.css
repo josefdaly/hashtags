@@ -32,14 +32,10 @@ header,div,body,h1,h2,h3,ul,li,a {
 
 .hashtag-form {
   width: 100%;
-  height: 20px;
+  height: 50px;
   padding: 10px;
   background-color: darkgray;
-}
-
-.hashtag-form button {
-  margin-top: 10px;
-}
+}S
 
 li img,video {
   height: 300px;
@@ -47,5 +43,9 @@ li img,video {
 }
 
 .btn {
-  display: inline-block !important; 
+  display: inline-block !important;
+}
+
+.loading-gif {
+  margin-top: 100px;
 }

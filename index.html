@@ -135,7 +135,7 @@
          this.nestedAjax(url);
        },
        getInitialState: function() {
-         return ({data: [], over: false});
+         return ({data: [], over: false, idx: 0});
        },
        render: function() {
          if (this.state.data.length > 0) {
@@ -159,7 +159,7 @@
            })
            return (
              <ul>
-               {Media}
+               {Media.slice(idx, 3)}
              </ul>
            )
          } else {
@@ -169,7 +169,7 @@
              )
            } else {
              return (
-               <img className="center-block" src="images/ajax-loader.gif" alt="loading" />
+               <img className="loading-gif center-block" src="images/ajax-loader.gif" alt="loading" />
              )
            }
          }
