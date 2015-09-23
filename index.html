@@ -39,9 +39,6 @@
          var formattedDate = date.toString();
          return (
            <li>
-            <h3>{this.props.username}</h3>
-            <span>{formattedDate}</span> <br/>
-            <a href={this.props.nativeUrl}>View at Instagram</a> <br/>
             <img src={this.props.url} alt="" />
            </li>
          )
@@ -54,9 +51,6 @@
          var formattedDate = date.toString();
          return (
            <li>
-             <h3>{this.props.username}</h3>
-             <span>{formattedDate}</span> <br/>
-             <a href={this.props.nativeUrl}>View at Instagram</a> <br/>
              <video controls>
                <source src={this.props.url} type="video/mp4" />
              </video>

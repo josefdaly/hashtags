@@ -3,6 +3,10 @@ header,div,body,h1,h2,h3,ul,li,a {
   margin: 0 0 0 0;
 }
 
+body {
+  background-color: gainsboro !important;
+}
+
 #nav {
   position: relative;
   background-color: blueviolet;
@@ -44,7 +48,6 @@ header,div,body,h1,h2,h3,ul,li,a {
 li img,video {
   height: 300px;
   width: 300px;
-  margin: 15px;;
 }
 
 li img:hover {
@@ -73,4 +76,5 @@ li video:hover {
 
 .content-container li {
   display: inline-block;
+  margin: 15px;
 }
