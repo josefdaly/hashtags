@@ -50,10 +50,9 @@ li img:hover {
 }
 
 .display-item {
-  margin-left: auto;
-  maright-right: auto;
-  height: 400px;
-  width: 400px;
+  margin-left: calc(50% - 175px)
+  height: 350px;
+  width: 350px;
 }
 
 .list-media {
