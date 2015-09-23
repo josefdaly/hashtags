@@ -26,9 +26,12 @@
        },
        render: function() {
          return (
-           <img onClick={this.handleClick} className="instagram-button"
-             src="http://www.pictacular.co/img/Instagram_normal.png"
-               alt="Instagram login" />
+           <div id="log-in">
+             <h2>Log in to Instagram to continue</h2>
+             <img onClick={this.handleClick} className="instagram-button center-block"
+               src="http://www.pictacular.co/img/Instagram_normal.png"
+                 alt="Instagram login" />
+           </div>
          )
        }
      })
@@ -247,7 +250,7 @@
      if (location.hash == "") {
        React.render(
          <SignIn />,
-         document.getElementById('login-status')
+         document.getElementById('content')
        )
      } else {
        var authToken = location.hash.slice(14)
@@ -258,7 +261,10 @@
          success: function(response) {
            var userInfo = response.data
            $('#login-status').html('<span>Hi ' + userInfo.full_name + '</span>');
-           React.render(<HashTagForm token={authToken} />, document.getElementById('form'))
+           React.render(
+             <HashTagForm token={authToken} />,
+             document.getElementById('form')
+           )
          }.bind(this),
          error: function() {
 
