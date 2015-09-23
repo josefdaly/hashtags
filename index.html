@@ -247,15 +247,21 @@
        },
        render: function() {
          return (
-           <div className="hashtag-form center-block">
-             <span>Hashtag: </span>
-             <input id="hashtag-input" type="text" />
-             <span>Start Date: </span>
-             <input id="start-date" type="date" />
-             <span>End Date: </span>
-             <input id="end-date" type="date" />
+           <div className="hashtag-form form-inline center-block">
+             <div className="form-group">
+               <span clssName="control-label">Hashtag: </span>
+               <input className="form-control" id="hashtag-input" type="text" />
+             </div>
+             <div className="form-group">
+               <span>Start Date: </span>
+               <input className="form-control" id="start-date" type="date" />
+             </div>
+             <div className="form-group">
+               <span>End Date: </span>
+               <input className="form-control" id="end-date" type="date" />
+             </div>
              <button onClick={this.handleClick}
-               className="btn btn-default">Load Content!</button>
+               className="btn btn-default pull-right">Load Content!</button>
            </div>
          )
        }
