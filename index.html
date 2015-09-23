@@ -117,8 +117,19 @@
            dataType: 'JSONP',
            crossDomain: true,
            success: function(response) {
-             var dataMostRecent = this.getCreatedTime(response.data[0]);
-             var dataOldest = this.getCreatedTime(response.data[response.data.length - 1]);
+             var i = 0
+             var dataMostRecent;
+             while (!dataMostRecent && i < response.data.length) {
+               dataMostRecent = this.getCreatedTime(response.data[i])
+               i++;
+             }
+             i = response.data.length - 1
+             var dataOldest;
+             while (!dataOldest && i >= 0) {
+               dataOldest = this.getCreatedTime(response.data[i]);
+               i--;
+             }
+
              var nextUrl = response.pagination.next_url
              if (new Date(this.props.start) < dataMostRecent) {
                var newData = this.parseResponse(response)
@@ -193,11 +204,11 @@
        },
        jumpClick: function() {
          var jumpTo = parseInt($('.current-page').val())
-         if (jumpTo < 1 || jumpTo > this.state.data.length) {
-           alert('Choose a number in the range!')
-         } else {
+         if (jumpTo > 0 && jumpTo <= this.state.data.length) {
            this.setState({ idx: jumpTo - 1 })
            $('.current-page').val("")
+         } else {
+           alert('Choose a number in the range!')
          }
        },
        clickLeft: function() {
