@@ -163,13 +163,10 @@
            return (
              <div id="ul-wrapper">
                <div className="info">
-                 <span>Content Count: {this.state.data.length}</span>
-
-                 <span id="username"></span>
-
-                 <span id="native-url"></span>
-
-                 <span id="created-time"></span>
+                 <span className="status">Viewing: {this.state.idx + 1} through {this.state.idx + 4} of {this.state.data.length}</span>
+                 <span className="status">Username: <span id="username"></span></span>
+                 <span className="status" id="native-url"></span>
+                 <span className="status">Tagged Time: <span id="created-time"></span></span>
                  <br/>
                </div>
                <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>

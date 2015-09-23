@@ -88,7 +88,12 @@ li video:hover {
 .carousel-arrow {
   position: fixed;
   top: 40%;
-  font-size: 60px;
+  font-size: 100px;
+  cursor: pointer;
+}
+
+.carousel-arrow:hover {
+  color: gray;
 }
 
 .left {
