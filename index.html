@@ -45,7 +45,7 @@
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();
          return (
-           <li onMouseIn={this.mouseIn}>
+           <li onMouseEnter={this.mouseIn}>
             <img className="list-media" src={this.props.url} alt="" />
            </li>
          )
@@ -63,7 +63,7 @@
        render: function() {
 
          return (
-           <li onMouseIn={this.mouseIn}>
+           <li onMouseEnter={this.mouseIn}>
              <video className="list-media" controls>
                <source src={this.props.url} type="video/mp4" />
              </video>
