@@ -191,6 +191,7 @@
                  {Media.slice(this.state.idx, this.state.idx + 6)}
                </ul>
                <span className="page-status">Viewing: {this.state.idx + 1} through {this.state.idx + 6} of {this.state.data.length}
+                <br/>
                 <button onClick={this.jumpClick} className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" placeholder="Item Number" className="current-page"/></span>
                <div className="carousel-arrow right" onClick={this.clickRight}>{'›'}</div>
              </div>
