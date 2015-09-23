@@ -107,14 +107,14 @@
            dataType: 'JSON',
            crossDomain: true,
            success: function(response) {
-             var dataStartTime = this.getCreatedTime(response.data[0]);
-             var dataEndTime = this.getCreatedTime(response.data[response.data.length - 1]);
+             var dataMostRecent = this.getCreatedTime(response.data[0]);
+             var dataOldest = this.getCreatedTime(response.data[response.data.length - 1]);
              var nextUrl = response.pagination.next_url
-             if (new Date(this.props.start) > dataEndTime) {
+             if (new Date(this.props.end) > dataOldest) {
                var newData = this.parseResponse(response)
                this.setState({ data: this.state.data.concat(newData) })
              }
-             if (nextUrl && dataEndTime > new Date(this.props.end)) {
+             if (nextUrl && dataNewest < new Date(this.props.start)) {
                this.nestedAjax(nextUrl);
              } else {
                this.setState({ over: true })
@@ -181,7 +181,7 @@
          $('#start-date').val("");
          $('#end-date').val("");
          if (input == "" || startDate == "" || endDate == "" ||
-           new Date(endDate) > new Date(startDate)) {
+           new Date(endDate) < new Date(startDate)) {
            alert('Invalid Input!')
          } else {
            React.unmountComponentAtNode(document.getElementById('content'));
