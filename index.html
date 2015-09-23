@@ -109,13 +109,13 @@
            success: function(response) {
              var dataStartTime = this.getCreatedTime(response.data[0]);
              var dataEndTime = this.getCreatedTime(response.data[response.data.length - 1]);
-             if (new Date(this.props.start) > dataEndTime && new Date(this.props.end) < dataStartTime) {
+             var nextUrl = response.pagination.next_url
+             if (new Date(this.props.start) > dataEndTime) {
                var newData = this.parseResponse(response)
-               var nextUrl = response.pagination.next_url
                this.setState({ data: this.state.data.concat(newData) })
-               if (nextUrl) {
-                 this.nestedAjax(nextUrl);
-               }
+             }
+             if (nextUrl && dataEndTime > new Date(this.props.end)) {
+               this.nestedAjax(nextUrl);
              }
            }.bind(this),
            error: function(response) {
