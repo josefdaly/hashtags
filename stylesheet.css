@@ -110,6 +110,8 @@ li video:hover {
   bottom: 20px;
   font-size: 100px;
   cursor: pointer;
+  z-index: 100;
+  user-select: none;
 }
 
 .carousel-arrow:hover {
