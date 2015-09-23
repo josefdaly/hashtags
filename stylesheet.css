@@ -69,6 +69,8 @@ li video:hover {
 }
 
 .content-container {
+  position: fixed;
+  bottom: 0px;
   margin-top: 20px;
   list-style-type: none;
   width: 100%;
@@ -87,7 +89,7 @@ li video:hover {
 
 .carousel-arrow {
   position: fixed;
-  top: 40%;
+  bottom: 20px;
   font-size: 100px;
   cursor: pointer;
 }
