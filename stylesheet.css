@@ -46,18 +46,18 @@ body {
 }
 
 li img:hover {
-  transform: scale(10);
+  transform: scale(4);
 }
 
 .list-media {
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   transition: .5s !important;
   vertical-align: top !important;
 }
 
 li video:hover {
-  transform: scale(10);
+  transform: scale(4);
 }
 
 .btn {
