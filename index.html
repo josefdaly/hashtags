@@ -35,7 +35,7 @@
 
      var ImageItem = React.createClass({
        mouseIn: function() {
-         $('#username').html(this.props.username);
+         $('#username').html('<strong>' + this.props.username + '</strong>');
          $('#native-url').html("<a href='" + this.props.nativeUrl + "'>View At Instagram</a>")
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();

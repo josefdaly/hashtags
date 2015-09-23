@@ -78,3 +78,8 @@ li video:hover {
   display: inline-block;
   margin: 15px;
 }
+
+.info span {
+  margin-left: 20px;
+  margin-right: 10px;
+}
