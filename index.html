@@ -164,7 +164,7 @@
              <div id="ul-wrapper">
                <div className="info">
                  <span className="status">Viewing: {this.state.idx + 1} through {this.state.idx + 3} of {this.state.data.length}
-                 <button className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" className="current-page" value=""/></span>
+                 <button onClick={this.jumpClick} className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" className="current-page" value="1"/></span>
                  <span className="status">Username: <span id="username"></span></span>
                  <span className="status" id="native-url"></span>
                  <span className="status">Tagged Time: <span id="created-time"></span></span>
@@ -189,6 +189,15 @@
            }
          }
        },
+       jumpClick: function() {
+         var jumpTo = parseInt($('.current-page').val())
+         if (jumpTo < 1 || jumpTo > this.state.data.length) {
+           alert('Choose a number in the range!')
+         } else {
+           this.setState({ idx: jumpTo - 1 })
+           $('.current-page').val("")
+         }
+       }
        clickLeft: function() {
          if (this.state.idx > 0) {
            this.setState({ idx: this.state.idx - 1 })
