@@ -69,6 +69,7 @@ li video:hover {
 }
 
 .content-container {
+  margin-top: 20px;
   list-style-type: none;
   width: 100%;
   text-align: center;
@@ -76,10 +77,24 @@ li video:hover {
 
 .content-container li {
   display: inline-block;
-  margin: 15px;
+  margin: 25px;
 }
 
 .info span {
-  margin-left: 20px;
-  margin-right: 10px;
+  margin-left: 20px !important;
+  margin-right: 10px !important;
+}
+
+.carousel-arrow {
+  position: fixed;
+  top: 40%;
+  font-size: 60px;
+}
+
+.left {
+  left: 10px;
+}
+
+.right {
+  right: 10px;
 }

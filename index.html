@@ -172,9 +172,11 @@
                  <span id="created-time"></span>
                  <br/>
                </div>
+               <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>
                <ul className="content-container">
                  {Media.slice(this.state.idx, 3)}
                </ul>
+               <div className="carousel-arrow right" onClick={this.clickRight}>{'›'}</div>
              </div>
            )
          } else {
@@ -187,6 +189,16 @@
                <img className="loading-gif center-block" src="images/ajax-loader.gif" alt="loading" />
              )
            }
+         }
+       },
+       clickLeft: function() {
+         if (this.state.idx > 0) {
+           this.setState({ idx: this.state.idx - 1 })
+         }
+       },
+       clickRight: function() {
+         if (this.state.idx < this.state.data.length - 4) {
+           this.setState({ idx: this.state.idx + 1 })
          }
        }
      })
