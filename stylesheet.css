@@ -45,3 +45,7 @@ li img,video {
   height: 300px;
   width: 300px;
 }
+
+.btn {
+  display: inline-block !important; 
+}
