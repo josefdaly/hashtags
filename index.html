@@ -86,7 +86,7 @@
            type: 'post',
            data: {"tag":{"name":this.props.tag, "data":this.state.data}}
          })
-       }
+       },
        parseResponse: function(response) {
          var dataToReturn = []
          response.data.forEach(function(datum) {
