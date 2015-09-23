@@ -49,11 +49,19 @@ li img:hover {
   transform: scale(1.2);
 }
 
+.display-item {
+  margin-left: auto;
+  maright-right: auto;
+  height: 400px;
+  width: 400px;
+}
+
 .list-media {
   height: 100px;
   width: 100px;
   transition: .5s !important;
   vertical-align: top !important;
+  cursor: pointer;
 }
 
 li video:hover {
@@ -82,6 +90,10 @@ li video:hover {
   margin: 25px;
 }
 
+.info {
+  text-align: center;
+}
+
 .info .status {
   margin-left: 20px !important;
   margin-right: 10px !important;
@@ -90,6 +102,8 @@ li video:hover {
 .page-status {
   display: block;
   text-align: center;
+  position: fixed;
+  bottom: 0;
 }
 
 .carousel-arrow {

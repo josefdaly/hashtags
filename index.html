@@ -44,11 +44,15 @@
          var formattedDate = date.toString();
          $('#created-time').html(formattedDate);
        },
+       handleClick: function() {
+         $('.media-display').html("<img src='" +
+            this.props.url + "' class='display-item'>")
+       },
        render: function() {
          var date = new Date(this.props.createdAt)
          var formattedDate = date.toString();
          return (
-           <li onMouseEnter={this.mouseIn}>
+           <li onMouseEnter={this.mouseIn} onClick={this.handleClick}>
             <img className="list-media" src={this.props.url} alt="" />
            </li>
          )
@@ -63,10 +67,13 @@
          var formattedDate = date.toString();
          $('#created-time').html(formattedDate);
        },
+       handleClick: function() {
+         $('.media-display').html("<video class='display-item' controls><source src='" +
+           this.props.url + "' type='video/mp4' /> </video>")
+       },
        render: function() {
-
          return (
-           <li onMouseEnter={this.mouseIn}>
+           <li onMouseEnter={this.mouseIn} onClick={this.handleClick}>
              <video className="list-media" controls>
                <source src={this.props.url} type="video/mp4" />
              </video>
@@ -176,9 +183,9 @@
            return (
              <div id="ul-wrapper">
                <div className="info">
-                 <span className="status">Username: <span id="username"></span></span>
+                 <span className="status"><span id="username"></span></span>
                  <span className="status" id="native-url"></span>
-                 <span className="status">Tagged Time: <span id="created-time"></span></span>
+                 <span className="status"><span id="created-time"></span></span>
                  <br/>
                </div>
                <div className="media-display">
