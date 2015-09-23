@@ -127,7 +127,7 @@
          })
        },
        componentDidMount: function() {
-         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken + "&count=100";
+         var url = "https://api.instagram.com/v1/tags/" + this.props.tag + "/media/recent?access_token=" + this.props.authToken + "&count=200";
          this.nestedAjax(url);
        },
        getInitialState: function() {
@@ -177,11 +177,8 @@
          var input = $('#hashtag-input').val();
          var startDate = $('#start-date').val();
          var endDate = $('#end-date').val();
-         $('#hashtag-input').val("");
-         $('#start-date').val("");
-         $('#end-date').val("");
          if (input == "" || startDate == "" || endDate == "" ||
-           new Date(endDate) < new Date(startDate)) {
+           new Date(endDate) < new Date(startDate) || input.split(" ").length > 1) {
            alert('Invalid Input!')
          } else {
            React.unmountComponentAtNode(document.getElementById('content'));
