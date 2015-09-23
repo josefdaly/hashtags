@@ -176,8 +176,8 @@
            return (
              <div id="ul-wrapper">
                <div className="info">
-                 <span className="status">Viewing: {this.state.idx + 1} through {this.state.idx + 3} of {this.state.data.length}
-                 <button onClick={this.jumpClick} className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" placeholder="Item Number" className="current-page"/></span>
+                 <span className="status">Viewing: {this.state.idx + 1} through {this.state.idx + 10} of {this.state.data.length}
+                  <button onClick={this.jumpClick} className="btn btn-xs btn-default" type="button">Jump to</button> <input type="text" placeholder="Item Number" className="current-page"/></span>
                  <span className="status">Username: <span id="username"></span></span>
                  <span className="status" id="native-url"></span>
                  <span className="status">Tagged Time: <span id="created-time"></span></span>
@@ -185,7 +185,7 @@
                </div>
                <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>
                <ul className="content-container">
-                 {Media.slice(this.state.idx, this.state.idx + 3)}
+                 {Media.slice(this.state.idx, this.state.idx + 10)}
                </ul>
                <div className="carousel-arrow right" onClick={this.clickRight}>{'›'}</div>
              </div>
@@ -217,7 +217,7 @@
          }
        },
        clickRight: function() {
-         if (this.state.idx < this.state.data.length - 3) {
+         if (this.state.idx < this.state.data.length - 10) {
            this.setState({ idx: this.state.idx + 1 })
          }
        }
