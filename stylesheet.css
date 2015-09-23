@@ -112,7 +112,11 @@ li video:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 300px:
+  width: 300px;
+  height: 172px;
   padding: 10px;
+  text-align: center;
   background-color: darkgray;
+  margin-top: 10%;
+  border-radius: 5px;
 }
