@@ -253,7 +253,7 @@
        var authToken = location.hash.slice(14)
        $.ajax({
          url: "https://api.instagram.com/v1/users/self?access_token=" + authToken,
-         dataType: "JSON",
+         dataType: "JSONP",
          crossDomain: true,
          success: function(response) {
            var userInfo = response.data
