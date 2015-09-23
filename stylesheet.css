@@ -80,7 +80,7 @@ li video:hover {
   margin: 25px;
 }
 
-.info span {
+.info .status {
   margin-left: 20px !important;
   margin-right: 10px !important;
 }
