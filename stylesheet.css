@@ -5,6 +5,7 @@ header,div,body,h1,h2,h3,ul,li,a {
 
 body {
   background-color: gainsboro !important;
+  min-width: 1062px;
 }
 
 #nav {
