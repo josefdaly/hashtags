@@ -25,11 +25,26 @@ var HashTagForm = React.createClass({
         ),
         React.createElement("div", {className: "form-group"},
           React.createElement("span", null, "Start Date: "),
-          React.createElement("input", {className: "form-control", id: "start-date", type: "date"})
+          React.createElement("input",
+            {
+              className: "form-control",
+              id: "start-date",
+              type: "date",
+              placeholder: "mm/dd/yyyy"
+            }
+          )
         ),
         React.createElement("div", {className: "form-group"},
           React.createElement("span", null, "End Date: "),
-          React.createElement("input", {className: "form-control", id: "end-date", type: "date"})
+          React.createElement(
+            "input",
+            {
+              className: "form-control",
+              id: "end-date",
+              type: "date",
+              placeholder: "mm/dd/yyyy"
+            }
+          )
         ),
         React.createElement("button", {onClick: this.handleClick,
           className: "btn btn-default pull-right load-btn"}, "Load Content!")
