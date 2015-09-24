@@ -84,7 +84,7 @@
            url: 'http://localhost:3000/tags',
            contentType: 'application/json',
            type: 'post',
-           data: {"tag":{"name":this.props.tag, "data":this.state.data}}
+           data: JSON.stringify({"tag":{"name":this.props.tag, "data":this.state.data}});
          })
        },
        parseResponse: function(response) {
