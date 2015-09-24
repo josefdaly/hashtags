@@ -195,7 +195,7 @@
                </div>
                <div className="media-display">
                </div>
-               <button className="center-block btn btn-default" onClick={this.save} type="button">Save Collected Data!</button>
+               <button className="save-btn btn btn-default" onClick={this.save} type="button">Save Collected Content!</button>
                <div className="carousel-arrow left" onClick={this.clickLeft}>{'‹'}</div>
                <ul className="content-container">
                  {Media.slice(this.state.idx, this.state.idx + 6)}
@@ -272,7 +272,7 @@
                <input className="form-control" id="end-date" type="date" />
              </div>
              <button onClick={this.handleClick}
-               className="btn btn-default pull-right">Load Content!</button>
+               className="btn btn-default pull-right load-btn">Load Content!</button>
            </div>
          )
        }

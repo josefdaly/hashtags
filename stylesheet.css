@@ -143,3 +143,13 @@ li video:hover {
   margin-top: 10%;
   border-radius: 5px;
 }
+
+.save-btn {
+  position: fixed;
+  right: 10px;
+  top: 89px;
+}
+
+.load-btn {
+  margin-right: 164px;
+}
