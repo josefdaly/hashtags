@@ -83,7 +83,7 @@
          $.ajax({
            url: 'http://localhost:3000/tags',
            contentType: 'application/json',
-           crossDomain: true;
+           crossDomain: true,
            type: 'post',
            data: JSON.stringify({"tag":{"name":this.props.tag, "data":this.state.data}})
          })
