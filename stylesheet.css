@@ -39,6 +39,10 @@ body {
   cursor: pointer;
 }
 
+.instagram-button {
+  opacity: .75;
+}
+
 .total-width {
   width: 100%;
 }
