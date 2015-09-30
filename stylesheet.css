@@ -8,6 +8,10 @@ body {
   min-width: 1062px;
 }
 
+.form-control {
+  border-radius: 17px !important;
+}
+
 #nav {
   position: relative;
   background-color: blueviolet;
