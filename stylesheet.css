@@ -39,7 +39,7 @@ body {
   cursor: pointer;
 }
 
-.instagram-button {
+.instagram-button:hover {
   opacity: .75;
 }
 
